@@ -1,3 +1,4 @@
+//the following lines are used to connect the js file to the html file
 const usernameInput = document.querySelector('#username');
 const submitButton = document.querySelector('.submit');
 const avatar = document.querySelector('.avatar');
@@ -9,17 +10,23 @@ const actionResult = document.querySelector('.action_result');
 
 async function getInfo(e) {
     let username = usernameInput.value;
+    //we'll check to see if the username is available at local storage
+    let data = await JSON.parse(window.localStorage.getItem(username));
     e.preventDefault();
     if (checkValidity(username)) {
         try {
+            if(data !=null){
+                //if it was in the local storage, it is loaded from there
+                setInfo(data)
+                showAlert("Loaded from Local Storage");
+            }
+            //if not available in local storage, we'll get it from the api
             let response = await fetch(`https://api.github.com/users/`+username);
             let obj = await response.json();
+            //if response isn't successful (response isn't 200), we'll have to show proper error message
             if (response.status != 200) {
                 if(response.status == 404){
                     showAlert("User not Found!");
-                }
-                else if(response.status==403){
-                    showAlert("Couldn't fetch! Rate limit exceeded!");
                 }
                 else{
                     showAlert("Unknown error!");
@@ -27,15 +34,8 @@ async function getInfo(e) {
                 return Promise.reject(`Request failed with error ${response.status}`);
             }
             setInfo(obj);
-
-            let data = await JSON.parse(window.localStorage.getItem(username));
-            console.log(data);
-            if (data != null) {
-                savedAnswerCard.style.display = "block";
-                setSavedAnswer(data);
-            } else {
-                savedAnswerCard.style.display = "none";
-            }
+            //we'll store the username in the local storage
+            window.localStorage.setItem(username, JSON.stringify(obj));
         } catch (e) {
             console.log(e);
         }
@@ -43,7 +43,8 @@ async function getInfo(e) {
         showAlert("Invalid input!");
     }
 }
-
+//we'll show the data here
+//if it is null, it will simply show a dash as a sign
 function setInfo(obj) {
     avatar.innerHTML = '<img src="' + obj.avatar_url + '"alt="avatar" class="avatar">';
     if(obj.name==null)
@@ -61,10 +62,10 @@ function setInfo(obj) {
     if(obj.bio==null)
         bio.innerHTML =  '<span>' + "Biography: -" + '</span>';
     else
-        bio.innerHTML =  '<span>' + "Biography: " + obj.bio + '</span>';
+        bio.innerHTML =  '<span>' + "Biography:\n" + obj.bio + '</span>';
 }
-
-
+//here, basic github username rules are checked
+//no more than 39 char, no two consecutive hyphens, no starting and ending with hyphen
 function checkValidity(username) {
     const regex1 = /[A-Za-z/d^((-)\2?(?!\2))+$]+/g;
     const regex2 = /[./?/$/+/#/=/,/~/`]+/g;
@@ -89,7 +90,7 @@ function checkValidity(username) {
     return false;
 }
 
-
+//this function is for error messages. it simply shows the error message and then disappears.
 function showAlert(title) {
     actionResult.style.display = "block";
     actionResult.innerHTML = "<span>" + title + "</span>";

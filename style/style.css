@@ -8,6 +8,8 @@ body {
 {
     margin-left:auto;
     margin-right:auto;
+    margin-top: auto;
+    margin-bottom: auto;
     width:960px;
 }
 /* the big rectangle in the code is the container
@@ -45,7 +47,7 @@ padding is done as well
 /* proportions for the header, specifically the *information* header */
 .header {
     position: relative;
-    color: darkblue;
+    color: rgb(139, 0, 0);
     font-weight: 500;
     font-size: 30px;
 }
@@ -60,10 +62,7 @@ padding is done as well
     height: 25px;
     text-align: center;
     margin: 5px;
-    background-color:  darkblue;
+    background-color:  rgb(139, 0, 0);
     color: white;
     border-radius: 10px;
 }
-/* .action_result {
-    display: none;
-} */
