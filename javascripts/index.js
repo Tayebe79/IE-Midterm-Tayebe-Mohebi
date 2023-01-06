@@ -45,12 +45,23 @@ async function getInfo(e) {
 }
 
 function setInfo(obj) {
-    
     avatar.innerHTML = '<img src="' + obj.avatar_url + '"alt="avatar" class="avatar">';
-    full_name.innerHTML = '<span>' + obj.name + '</span>';
-    blog.innerHTML = '<span>' + obj.blog + '</span>';
-    location1.innerHTML = '<span>' + obj.location + '</span>'
-    bio.innerHTML =  '<span>' + obj.bio + '</span>'
+    if(obj.name==null)
+        full_name.innerHTML = '<span>' + "Full Name: -" + '</span>';
+    else
+        full_name.innerHTML = '<span>' + "Full Name: " + obj.name + '</span>';
+    if(obj.blog=="")
+        blog.innerHTML = '<span>' + "Blog Address: -"  + '</span>';
+    else
+        blog.innerHTML = '<span>' + "Blog Address: " + obj.blog + '</span>';
+    if(obj.location==null)
+        location1.innerHTML = '<span>' + "Location: -" + '</span>';
+    else
+        location1.innerHTML = '<span>' + "Location: " + obj.location + '</span>';
+    if(obj.bio==null)
+        bio.innerHTML =  '<span>' + "Biography: -" + '</span>';
+    else
+        bio.innerHTML =  '<span>' + "Biography: " + obj.bio + '</span>';
 }
 
 
@@ -88,5 +99,4 @@ function showAlert(title) {
 }
 
 submitButton.addEventListener('click', getInfo);
-clearButton.addEventListener('click', removeSavedAnswer);
 window.localStorage.clear();

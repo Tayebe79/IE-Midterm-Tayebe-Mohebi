@@ -1,15 +1,20 @@
-
+/* just to set the background image, and to make sure it covers the entire page */
 body {
     background: url("../image/background.jpg") no-repeat center center fixed;
     background-size: cover;
 }
-
+/*a wrapper, to make sure when when the window is resized, things won't get distorted*/
 #wrapper
 {
     margin-left:auto;
     margin-right:auto;
     width:960px;
 }
+/* the big rectangle in the code is the container
+this is to make sure it is in the center
+the background is set in a way that ensures enough transparency, opacity is not set.
+padding is done as well
+*/
 .container {
     width: 50%;
     min-height: 60%;
@@ -24,39 +29,32 @@ body {
     background-color: rgba(229,229,229, 0.85);
     padding: 5px;
     z-index: 100;
-
     border-radius: 10px;
-    padding: 10px;
-    
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
 }
-
+/* setting the proportions for the avatar picture */
 .avatar{
     width: 70%;
     min-height: 80%;
     top: 80%;
     left: 80%
 }
+/* proportions for the header, specifically the *information* header */
 .header {
     position: relative;
     color: darkblue;
     font-weight: 500;
     font-size: 30px;
 }
-
-.card {
-    width: 40%;
-}
-
-
+/* the two left and right rectangles (username submission and the information page) have their properties set here */
 .fieldset {
     padding: 10px;
     border-radius: 10px;
 }
-
+/* this is to decide what the button looks like. the color, margin, width, height and etc are all set here */
 .button {
     width: 120px;
     height: 25px;
@@ -66,9 +64,6 @@ body {
     color: white;
     border-radius: 10px;
 }
-.action_result {
+/* .action_result {
     display: none;
-}
-.saved_card {
-    display: none;
-}
+} */
