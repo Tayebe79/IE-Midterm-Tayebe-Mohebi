@@ -4,6 +4,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Is this a member??</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" type="image/png" href="./images/logo.png" />
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="icon" type="image/png" href="./image/logo.png" />
 </head>
+<body>
+    <div id="wrapper">
+    <div class="container">
+        <!-- left-info -->
+        <div class="info">
+            <!-- </form> -->
+                <fieldset class="fieldset">
+                    <legend class="header">Information</legend>
+                    <div class="avatar"></div>
+                    <div class="full_name"></div>
+                    <div class="blog"></div>
+                    <div class="location1"></div>
+                    <div class="bio"></div>
+                </fieldset>
+            
+        </div>
+        <!-- right-submit -->
+        <div class="submitter">
+            <div class="submitter_content">
+                <form class="info_content">
+                    <fieldset class="fieldset">
+                        <label for="username">username</label>
+                        <input type="text" id="username" maxlength="255" pattern="[A-Za-z0-9/-{2}]+" required>
+                        <br><br>
+                        <br>
+                        <button class="submit button">submit</button><br>
+                    </fieldset>
+                </form>
+                <div class="action_result"></div>
+            </div>
+        </div>
+    </div>
+    <script src="./javascripts/index.js"></script>
+    </div>
+</body>
