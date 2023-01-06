@@ -37,6 +37,7 @@ async function getInfo(e) {
             //we'll store the username in the local storage
             window.localStorage.setItem(username, JSON.stringify(obj));
         } catch (e) {
+            //network error handling is done here
             console.log(e);
             if(e.message == "NetworkError when attempting to fetch resource."){
                 showAlert("Network error");
