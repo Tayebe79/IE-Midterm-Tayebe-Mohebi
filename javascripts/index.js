@@ -38,6 +38,9 @@ async function getInfo(e) {
             window.localStorage.setItem(username, JSON.stringify(obj));
         } catch (e) {
             console.log(e);
+            if(e.message == "NetworkError when attempting to fetch resource."){
+                showAlert("Network error");
+            }
         }
     } else {
         showAlert("Invalid input!");

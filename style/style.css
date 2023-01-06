@@ -14,7 +14,7 @@ body {
 }
 /* the big rectangle in the code is the container
 this is to make sure it is in the center
-the background is set in a way that ensures enough transparency, opacity is not set.
+the background is set in a way that ensures enough transparency,instead of using opacity.
 padding is done as well
 */
 .container {
@@ -24,13 +24,8 @@ padding is done as well
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     background-color: rgba(229,229,229, 0.85);
     padding: 5px;
-    z-index: 100;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
@@ -55,6 +50,7 @@ padding is done as well
 .fieldset {
     padding: 10px;
     border-radius: 10px;
+    align-items: center;
 }
 /* this is to decide what the button looks like. the color, margin, width, height and etc are all set here */
 .button {
